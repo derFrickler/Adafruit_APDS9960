@@ -575,3 +575,23 @@ void Adafruit_APDS9960::write(uint8_t reg, uint8_t *buf, uint8_t num)
 	Wire.write((uint8_t *)buf, num);
 	Wire.endTransmission();
 }
+
+// added for kniwwelino convenience
+  uint16_t Adafruit_APDS9960::getWhite() {
+      return this->read16R(APDS9960_CDATAL);
+  }
+  uint16_t Adafruit_APDS9960::getRed() {
+      return this->read16R(APDS9960_RDATAL);
+  }
+  uint16_t Adafruit_APDS9960::getGreen() {
+      return this->read16R(APDS9960_GDATAL);
+  }
+  uint16_t Adafruit_APDS9960::getBlue() {
+      return this->read16R(APDS9960_BDATAL);
+  }
+  uint16_t Adafruit_APDS9960::getLux() {
+        uint16_t r, g, b, c;
+        this->getColorData(&r, &g, &b, &c);
+        return this->calculateLux(r, g, b);
+  }
+  
