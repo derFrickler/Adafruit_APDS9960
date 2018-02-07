@@ -243,6 +243,12 @@ class Adafruit_APDS9960 {
   // turn on/off elements
   void     enable(boolean en = true);
 
+  // added for kniwwelino convenience
+  uint16_t getWhite();
+  uint16_t getRed();
+  uint16_t getGreen();
+  uint16_t getBlue();
+  uint16_t getLux();
 
  private:
   uint8_t _i2caddr;
@@ -443,13 +449,13 @@ class Adafruit_APDS9960 {
 	config3 _config3;
 	
 	struct gconf1 {
-		/* Gesture Exit Persistence. When a number of consecutive “gesture end” occurrences become
+		/* Gesture Exit Persistence. When a number of consecutive Â“gesture endÂ” occurrences become
 		equal or greater to the GEPERS value, the Gesture state machine is exited.
 		*/
 		uint8_t GEXPERS : 2;
 		
 		/* Gesture Exit Mask. Controls which of the gesture detector photodiodes (UDLR) will be included
-		to determine a “gesture end” and subsequent exit of the gesture state machine. Unmasked
+		to determine a Â“gesture endÂ” and subsequent exit of the gesture state machine. Unmasked
 		UDLR data will be compared with the value in GTHR_OUT. Field value bits correspond to UDLR
 		detectors.
 		*/
